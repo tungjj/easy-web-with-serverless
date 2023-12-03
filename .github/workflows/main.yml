@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        working-directory: ./function/
         with:
           node-version: "20.x"
-      - run: cd ./function/
-      - run: ls
+        run: ls
+        # uses: actions/setup-node@v3
       # - run: npm ci
       # - run: npm run build --if-present
       # - run: npm test
