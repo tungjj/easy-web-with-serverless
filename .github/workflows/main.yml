@@ -30,6 +30,7 @@ jobs:
         uses: serverless/github-action@master
         with:
           args: -c "cd ./function && serverless plugin install --name serverless-offline && serverless deploy"
+          entrypoint: /bin/sh
         env:
           # working-directory: ${{env.working-directory}}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
