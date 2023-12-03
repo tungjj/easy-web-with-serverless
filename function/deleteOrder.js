@@ -7,7 +7,7 @@ import {
 } from "@aws-sdk/lib-dynamodb";
 import { STATUS_CODE, response } from "./responseMessage.js";
 
-export const handler = async (event) => {
+const handler = async (event) => {
   try {
     const client = new DynamoDBClient({ region: constant.REGION });
     const docClient = DynamoDBDocumentClient.from(client);
@@ -44,3 +44,4 @@ export const handler = async (event) => {
     return response(STATUS_CODE.BAD_REQUEST, null, JSON.stringify(error));
   }
 };
+export { handler };

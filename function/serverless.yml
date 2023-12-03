@@ -15,6 +15,9 @@ provider:
   runtime: nodejs20.x
   architecture: x86_64
 
+  httpApi:
+    payload: "2.0"
+
   tags:
     name: STTQ
 
@@ -67,7 +70,7 @@ functions:
           # cors: true
           # allowedOrigins: "*"
           method: PATCH
-          path: /order/
+          path: /order
 
   DeleteOrder:
     handler: deleteOrder.handler
@@ -79,4 +82,4 @@ functions:
           # cors: true
           # allowedOrigins: "*"
           method: DELETE
-          path: /order/
+          path: /order
