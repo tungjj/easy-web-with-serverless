@@ -1,0 +1,82 @@
+org: tungjj
+app: sttq
+service: STTQ
+frameworkVersion: "3"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  stage: dev
+  region: ap-southeast-1
+
+  memorySize: 512
+  runtime: nodejs20.x
+  architecture: x86_64
+
+  tags:
+    name: STTQ
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource: "arn:aws:dynamodb:ap-southeast-1:*:*"
+        - Effect: Allow
+          Action:
+            - cloudwatch:GenerateQuery
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: "*"
+functions:
+  CreateTable:
+    handler: createTable.handler
+    memorySize: 512
+    runtime: nodejs20.x
+    architecture: x86_64
+    events:
+      - httpApi:
+          cors: true
+          allowedOrigins: "*"
+          method: POST
+          path: /table
+
+  CreateOrder:
+    handler: createOrder.handler
+    memorySize: 512
+    runtime: nodejs20.x
+    architecture: x86_64
+    events:
+      - httpApi:
+          cors: true
+          allowedOrigins: "*"
+          method: POST
+          path: /order
+
+  UpdateOrder:
+    handler: updateOrder.handler
+    memorySize: 512
+    runtime: nodejs20.x
+    architecture: x86_64
+    events:
+      - httpApi:
+          cors: true
+          allowedOrigins: "*"
+          method: PATCH
+          path: /order/
+
+  DeleteOrder:
+    handler: deleteOrder.handler
+    memorySize: 512
+    runtime: nodejs20.x
+    architecture: x86_64
+    events:
+      - httpApi:
+          cors: true
+          allowedOrigins: "*"
+          method: DELETE
+          path: /order/
