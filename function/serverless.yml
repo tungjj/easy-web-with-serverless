@@ -43,8 +43,8 @@ functions:
     architecture: x86_64
     events:
       - httpApi:
-          # cors: true
-          # allowedOrigins: "*"
+          cors: true
+          allowedOrigins: "*"
           method: POST
           path: /table
 
@@ -55,8 +55,8 @@ functions:
     architecture: x86_64
     events:
       - httpApi:
-          # cors: true
-          # allowedOrigins: "*"
+          cors: true
+          allowedOrigins: "*"
           method: POST
           path: /order
 
@@ -67,8 +67,8 @@ functions:
     architecture: x86_64
     events:
       - httpApi:
-          # cors: true
-          # allowedOrigins: "*"
+          cors: true
+          allowedOrigins: "*"
           method: PATCH
           path: /order
 
@@ -79,7 +79,7 @@ functions:
     architecture: x86_64
     events:
       - httpApi:
-          # cors: true
-          # allowedOrigins: "*"
+          cors: true
+          allowedOrigins: "*"
           method: DELETE
           path: /order
