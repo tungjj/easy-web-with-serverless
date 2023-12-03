@@ -27,7 +27,7 @@ jobs:
         # - run: npm test
 
       - name: serverless deploy
-        uses: serverless/github-action@main
+        uses: serverless/github-action@master
         with:
           args: -c "cd ./function && serverless plugin install --name serverless-offline && serverless deploy"
         env:
